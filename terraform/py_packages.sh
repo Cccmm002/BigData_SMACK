@@ -9,3 +9,5 @@ sudo /usr/local/bin/pip install kafka-python
 sudo /usr/local/bin/pip install googlefinance
 
 sudo /usr/local/bin/pip install apscheduler
+
+sudo /usr/local/bin/pip install cassandra-driver

@@ -1,5 +1,4 @@
 .idea/*
-.DS_Store
 
 /cred/*
 /terraform/variables.tf

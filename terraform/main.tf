@@ -63,6 +63,11 @@ resource "aws_instance" "WebServer" {
   }
 
   provisioner "file" {
+    source = "../data-storage.py"
+    destination = "~/data-storage.py"
+  }
+
+  provisioner "file" {
     source = "py_packages.sh"
     destination = "~/py_packages.sh"
   }
@@ -73,6 +78,7 @@ resource "aws_instance" "WebServer" {
       "chmod +x ~/py_packages.sh",
       "~/py_packages.sh",
       "nohup python data-producer.py ${aws_instance.SMACK.public_ip}:9092 stock-analyzer > data-producer.log 2> data-producer.err < /dev/null &",
+      "nohup python data-storage.py stock-analyzer ${aws_instance.SMACK.public_ip}:9092 stock stock ${aws_instance.SMACK.public_ip} > data-storage.log 2> data-storage.err < /dev/null &",
     ]
   }
 }
