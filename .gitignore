@@ -1,0 +1,6 @@
+/cred/*
+/terraform/variables.tf
+/terraform/setup-cp.sh
+/terraform/terraform
+/terraform/terraform.tfstate
+/terraform/terraform.tfstate.backup
