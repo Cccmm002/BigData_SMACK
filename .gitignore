@@ -1,3 +1,6 @@
+.idea/*
+.DS_Store
+
 /cred/*
 /terraform/variables.tf
 /terraform/setup-cp.sh
