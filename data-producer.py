@@ -87,7 +87,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('kafka_broker', help="the address of kafka broker, with port number")
     parser.add_argument('topic_name', help="the certain topic name of kafka")
-    parser.add_argument('flask_port', help="the port assigned for flask")
+    parser.add_argument('flask_port', type=int, help="the port assigned for flask")
     args = parser.parse_args()
     kafka_topic = args.topic_name
     kafka_broker = args.kafka_broker

@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-sudo /usr/local/bin/pip install --upgrade pip
+sudo yum install nodejs npm --enablerepo=epel
+
+sudo /usr/bin/pip install --upgrade pip
 
 sudo /usr/local/bin/pip install flask
 
@@ -11,3 +13,5 @@ sudo /usr/local/bin/pip install googlefinance
 sudo /usr/local/bin/pip install apscheduler
 
 sudo /usr/local/bin/pip install cassandra-driver
+
+sudo npm i frontail -g
