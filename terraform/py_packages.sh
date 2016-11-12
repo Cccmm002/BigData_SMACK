@@ -14,4 +14,4 @@ sudo /usr/local/bin/pip install apscheduler
 
 sudo /usr/local/bin/pip install cassandra-driver
 
-sudo npm i frontail -g
+sudo npm install nogger -g
