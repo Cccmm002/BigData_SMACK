@@ -1,17 +1,28 @@
 #!/usr/bin/env bash
 
-sudo yum install nodejs npm --enablerepo=epel
+sudo apt-get update
+
+sudo apt install -y python-pip
+
+sudo apt install -y nodejs-legacy
+
+sudo apt install -y npm
+
+sudo npm update
+
+sudo npm install -g log.io --user "ubuntu"
 
 sudo /usr/bin/pip install --upgrade pip
 
-sudo /usr/local/bin/pip install flask
+sudo /usr/bin/pip install flask
 
-sudo /usr/local/bin/pip install kafka-python
+sudo /usr/bin/pip install kafka-python
 
-sudo /usr/local/bin/pip install googlefinance
+sudo /usr/bin/pip install googlefinance
 
-sudo /usr/local/bin/pip install apscheduler
+sudo /usr/bin/pip install apscheduler
 
-sudo /usr/local/bin/pip install cassandra-driver
+sudo /usr/bin/pip install cassandra-driver
 
-sudo npm install nogger -g
+rm ~/.log.io/harvester.conf
+cp ~/harvester.conf ~/.log.io/

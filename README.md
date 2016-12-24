@@ -6,4 +6,4 @@ SMACK ports list:
 
 Web Server ports list:
 * Flask server: 5000
-* Nogger log viewer: 9002
+* Log.io log viewer: 28778

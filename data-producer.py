@@ -42,13 +42,13 @@ def shutdown_hook():
 def fetch_price(symbol):
     try:
         logger.debug('Start to fetch stock price %s', symbol)
-        stock_price = json.dumps(getQuotes(symbol))
-        producer.send(topic=kafka_topic, value=stock_price, timestamp_ms=time.time())
+        stock_price = json.dumps(getQuotes(str(symbol)))
+        producer.send(topic=kafka_topic, value=stock_price.encode('utf-8'), timestamp_ms=time.time())
         logger.debug('Finish write to kafka')
     except KafkaTimeoutError as timeout_error:
-        logger.warn('Failed to send stock price for %s, cauesd by %s', symbol, timeout_error.message)
+        logger.warning('Failed to send stock price for {0}, cauesd by {1}'.format(symbol, timeout_error))
     except Exception as e:
-        logger.error('Failed to send stock info, because %s', e.message)
+        logger.error('Failed to send stock info, because {0}'.format(e))
 
 
 @app.route('/', methods=['GET'])
