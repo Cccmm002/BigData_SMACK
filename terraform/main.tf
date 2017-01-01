@@ -44,7 +44,7 @@ resource "aws_instance" "SMACK" {
 
 resource "aws_instance" "WebServer" {
   ami = "ami-d8bdebb8"
-  instance_type = "t2.micro"
+  instance_type = "t2.medium"
   security_groups = ["${aws_security_group.all-allow.name}"]
   key_name = "${var.key_name}"
 
@@ -73,24 +73,26 @@ resource "aws_instance" "WebServer" {
   }
 
   provisioner "file" {
+    source = "start-server.sh"
+    destination = "~/start-server.sh"
+  }
+
+  provisioner "file" {
     source = "log.io.config/harvester.conf"
     destination = "~/harvester.conf"
+  }
+
+  provisioner "file" {
+    source = "nodejs.zip"
+    destination = "~/nodejs.zip"
   }
 
   provisioner "remote-exec" {
     inline = [
       "chmod +x ~/py_packages.sh",
+      "chmod +x ~/start_server.sh",
       "~/py_packages.sh",
-      "exit",
-    ]
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "nohup python data-producer.py ${aws_instance.SMACK.public_ip}:9092 stock-analyzer 5000 > data-producer.log 2> data-producer.err < /dev/null &",
-      "nohup python data-storage.py stock-analyzer ${aws_instance.SMACK.public_ip}:9092 stock stock ${aws_instance.SMACK.public_ip} > data-storage.log 2> data-storage.err < /dev/null &",
-      "log.io-server &",
-      "log.io-harvester &",
+      "~/start_server.sh ${aws_instance.SMACK.public_ip}",
     ]
   }
 }

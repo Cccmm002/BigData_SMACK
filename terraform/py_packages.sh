@@ -2,6 +2,8 @@
 
 sudo apt-get update
 
+sudo apt install -y unzip
+
 sudo apt install -y python-pip
 
 sudo apt install -y nodejs-legacy
@@ -17,6 +19,8 @@ sudo /usr/bin/pip install --upgrade pip
 sudo /usr/bin/pip install flask
 
 sudo /usr/bin/pip install kafka-python
+
+sudo /usr/bin/pip install redis
 
 sudo /usr/bin/pip install googlefinance
 
