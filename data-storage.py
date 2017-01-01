@@ -75,7 +75,7 @@ def shutdown_hook(consumer, session):
         session.shutdown()
         logger.info('Cassandra Session closed')
     except KafkaError as kafka_error:
-        logger.warn('Failed to close Kafka Consumer, caused by: %s', kafka_error.message)
+        logger.warning('Failed to close Kafka Consumer, caused by: {0}'.format(kafka_error))
     finally:
         logger.info('Existing program')
 
