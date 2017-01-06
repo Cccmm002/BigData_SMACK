@@ -73,8 +73,8 @@ resource "aws_instance" "WebServer" {
   }
 
   provisioner "file" {
-    source = "start-server.sh"
-    destination = "~/start-server.sh"
+    source = "start_server.sh"
+    destination = "~/start_server.sh"
   }
 
   provisioner "file" {

@@ -6,6 +6,8 @@ nohup python redis-publisher.py average-stock-price $1:9092 average-stock-price 
 log.io-server &
 log.io-harvester &
 
+unzip nodejs.zip
+
 cd nodejs
 npm install
 
